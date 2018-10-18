@@ -23,27 +23,36 @@ class ViewController: UIViewController {
         }
         
         set {
-            displayLabel.text = String(newValue)
+            if newValue.isInfinite {
+                displayLabel.text = "Error"
+            } else {
+                if (newValue.rounded() == newValue) {
+                    displayLabel.text = String(format: "%.0f", newValue)
+                } else {
+                    displayLabel.text = String(newValue)
+                }
+            }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
     }
     
     private var calculator = CalculatorLogic()
     
     @IBAction func calcButtonPressed(_ sender: UIButton) {
-        isFinishedTypingNumber = true
-        
-        calculator.setNumber(displayValue)
-        
-        if let calcMethod = sender.currentTitle {
+        if displayLabel.text != "Error" {
+            isFinishedTypingNumber = true
             
+            calculator.setNumber(displayValue)
             
-            displayValue = calculator.calculate(symbol: calcMethod) ?? 0
+            if let calcMethod = sender.currentTitle {
+                if let result = calculator.calculate(symbol: calcMethod) {
+                    displayValue = result
+                }
+            }
+        } else if displayLabel.text == "Error" && sender.currentTitle == "AC" {
+            displayValue = 0
         }
+        
+        
     }
     
     @IBAction func numButtonPressed(_ sender: UIButton) {
