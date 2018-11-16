@@ -52,7 +52,6 @@ class ViewController: UIViewController {
             displayValue = 0
         }
         
-        
     }
     
     @IBAction func numButtonPressed(_ sender: UIButton) {
@@ -70,4 +69,3 @@ class ViewController: UIViewController {
     }
     
 }
-
