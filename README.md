@@ -1,4 +1,4 @@
-# Todoey
+# Calculator
 Using Realm to create a persistive todo list app.
 
 - User's can add a todo list category.
@@ -15,6 +15,6 @@ Using Realm to create a persistive todo list app.
 
 
 ## Finished App
-<img src="todoey.gif" width="250">
+<img src="calculator.gif" width="250">
 
 Copyright © Hector Mendoza
